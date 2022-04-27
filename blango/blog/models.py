@@ -23,7 +23,7 @@ class Comment(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     modified_at = models.DateTimeField(auto_now=True)
     published_at = models.DateTimeField(blank=True, null=True)
     title = models.TextField(max_length=100)
@@ -32,6 +32,8 @@ class Post(models.Model):
     content = models.TextField()
     tags = models.ManyToManyField(Tag, related_name="posts")
     comments = GenericRelation(Comment)
+    published_at = models.DateTimeField(blank=True, null=True, db_index=True)
+    object_id = models.PositiveIntegerField(db_index=True)
 
     def __str__(self):
         return self.title
