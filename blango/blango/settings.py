@@ -56,11 +56,12 @@ class Dev(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'blango_auth',
         'blog',
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
-
+        
 
     ]
 
@@ -160,7 +161,7 @@ class Dev(Configuration):
     # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+    AUTH_USER_MODEL = "blango_auth.User"
     LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,
@@ -200,4 +201,4 @@ class Dev(Configuration):
         },
     }
 
-     
+  
