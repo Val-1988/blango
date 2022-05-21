@@ -78,6 +78,7 @@ class Dev(Configuration):
         "allauth.socialaccount.providers.google",
         "rest_framework",
         "rest_framework.authtoken",
+        "drf_yasg",
         
 
     ]
@@ -93,6 +94,7 @@ class Dev(Configuration):
     ],
   }
 
+    
     MIDDLEWARE = [
         'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.security.SecurityMiddleware',
@@ -163,6 +165,7 @@ class Dev(Configuration):
       'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
     ]
 
+    
 
 
     # Internationalization
@@ -190,6 +193,13 @@ class Dev(Configuration):
 
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
     AUTH_USER_MODEL = "blango_auth.User"
+
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
     LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,
@@ -228,5 +238,7 @@ class Dev(Configuration):
             "level": "DEBUG",
         },
     }
+    
+    
 
   
